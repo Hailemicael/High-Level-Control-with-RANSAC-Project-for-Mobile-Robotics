@@ -77,15 +77,14 @@ RANSAC is employed to enhance the robustness of wall detection and distance meas
 
 ### HighLabelControlWithRansac
 
-[![Watch HighLabelControlWithRansac on Vimeo](https://i.vimeocdn.com/video/990198283_640.jpg)](https://vimeo.com/990198283)
+[![Watch HighLabelControlWithRansac on Vimeo](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/Screenshot%20from%202024-07-23%2018-07-23.png)](https://vimeo.com/990198283)
 
 *Description: Demonstration of the high-level control system with RANSAC.*
 
 You can also view the video directly on [Vimeo](https://vimeo.com/990198283).
 
 ### HighLabelllControlWithRansac
-https://vimeo.com/990198008
-[![Watch HighLabelControlWithRansac on Vimeo](https://i.vimeocdn.com/video/990198283_640.jpg)](https://vimeo.com/990198008)
+[![Watch HighLabelControlWithRansac on Vimeo](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/Screenshot%20from%202024-07-24%2001-17-26.png)](https://vimeo.com/990198008)
 
 *Description: Demonstration of the high-level control system with RANSAC.*
 
