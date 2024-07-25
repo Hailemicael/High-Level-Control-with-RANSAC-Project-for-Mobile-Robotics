@@ -1,77 +1,62 @@
 # High-Level Control with RANSAC for Mobile Robotics
 
-This project implements a high-level control system for a Turtlebot3 robot, enabling autonomous wall-following behavior using ROS 2 and advanced data processing techniques (Ransac).
-
-## Table of Contents
-- [Authors](#authors)
-- [Project Overview](#project-overview)
-- [Key Features](#key-features)
-- [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [ROS2 Installation](#ros2-installation)
-  - [Unity Installation](#unity-installation)
-  - [Project Setup](#project-setup)
-- [Running the Project](#running-the-project)
-- [Customization and Improvement](#customization-and-improvement)
-- [Troubleshooting](#troubleshooting)
-- [Additional Resources](#additional-resources)
+This project implements a high-level control system for the Turtlebot3 robot, enabling autonomous wall-following behavior using ROS 2 and the RANSAC (Random Sample Consensus) algorithm for robust data processing.
 
 ## Authors
 
-Hailemicael Lulseged Yimer and Fitsum Sereke Tedlla (University of Verona, 2024)
+- **Hailemicael Lulseged Yimer**
+- **Fitsum Sereke Tedlla**
+
+*University of Verona, 2024*
 
 ## Project Overview
 
-Our project focuses on implementing high-level control in robotics using a RANSAC (Random Sample Consensus) algorithm to enhance wall-following behavior. High-level control involves managing complex tasks by breaking them down into simpler sub-tasks. In this project, we use RANSAC to improve the accuracy and robustness of wall detection and navigation.
+Our project focuses on developing a sophisticated control system for mobile robots using ROS 2 and RANSAC. The aim is to enhance the Turtlebot3's ability to follow walls autonomously by improving wall detection accuracy and robustness. The project demonstrates how high-level control can be used to manage complex behaviors through simplified sub-tasks and advanced data processing techniques.
 
 ## High-Level Control Tools
 
-High-level control solutions abstract complex sensor data processing and enable robots to perform advanced tasks by combining basic actions. The tools commonly used for high-level control include:
+High-level control systems abstract complex sensor data processing to enable robots to perform advanced tasks by combining basic actions. Key tools and concepts used in high-level control include:
 
-- **Finite State Machines (FSM)**
-- **Behavior Trees**
-- **Petri Nets**
-
-For this project, we utilize **Finite State Machines (FSM)** due to their simplicity and effectiveness in managing the robot's tasks.
+- **Finite State Machines (FSMs):** Manage the robot’s behavior by transitioning between different states based on sensor inputs.
+- **RANSAC Algorithm:** Enhances data robustness and accuracy by fitting models to data while disregarding outliers.
 
 ## FSM for Wall Following
 
 ### States and Transitions
 
-Our FSM for wall-following includes the following states and transitions:
+The Finite State Machine (FSM) used in this project manages the robot's wall-following behavior through the following states:
 
-1. **Find a Wall**: The robot searches for a wall using lidar data.
-2. **Follow the Wall**: The robot maintains a specific distance from the wall while moving forward.
-3. **Align Left**: The robot rotates to ensure the wall is positioned correctly (to the right if turning left).
+1. **Find a Wall:** The robot uses LiDAR data to search for a wall.
+2. **Follow the Wall:** The robot maintains a specific distance from the wall while moving forward.
+3. **Align Left:** The robot rotates to align the wall correctly, typically to the right if turning left.
 
 #### Transition Rules
 
-- **E1**: Transition to "Find Wall" if the right lidar region detects a wall (greater than the threshold).
-- **E2**: Transition to "Align Left" if the front lidar region detects a wall or if both front and right lidar regions are too close.
-- **E3**: Transition to "Follow Wall" if the front and left lidar regions detect walls.
+- **E1:** Transition to "Find Wall" when the right LiDAR sensor detects a wall beyond a defined threshold.
+- **E2:** Transition to "Align Left" if the front LiDAR sensor detects a wall or if both the front and right LiDAR regions are too close.
+- **E3:** Transition to "Follow Wall" if both the front and left LiDAR sensors detect walls.
 
 ### Implementation of Primitives
 
-- **Find Wall**: Move the robot with defined linear and angular velocities.
-- **Align Left**: Rotate the robot in place with a specified angular velocity.
-- **Follow Wall**: Move forward while maintaining a defined distance from the wall.
+- **Find Wall:** Move the robot forward with specific linear and angular velocities to locate the wall.
+- **Align Left:** Rotate the robot in place with a specified angular velocity to align it with the wall.
+- **Follow Wall:** Continue moving forward while keeping a set distance from the wall.
 
 ## RANSAC Integration
 
-In our project, RANSAC is used to enhance the wall-following behavior. The integration of RANSAC improves the robustness of wall detection and distance measurements.
+RANSAC is employed to enhance the robustness of wall detection and distance measurements in this project. 
 
 ### How RANSAC is Applied
 
-1. **Wall Detection**: Use RANSAC to robustly fit a line to lidar data, filtering out noise and accurately identifying the wall's position.
-2. **Distance Measurement**: Compute the distance from the robot to the wall based on the RANSAC-fitted line.
-3. **Update FSM**: Refine FSM transitions using the improved wall detection and distance measurements provided by RANSAC.
+1. **Wall Detection:** Use RANSAC to fit a line to the LiDAR data, filtering out noise and accurately determining the wall's position.
+2. **Distance Measurement:** Calculate the distance between the robot and the wall based on the line fitted by RANSAC.
+3. **Update FSM:** Refine FSM transitions using the improved wall detection and distance measurements provided by RANSAC.
 
 ## Visuals
 
 ### FSM Diagram
 
 ![FSM Diagram](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/HighLabelCOntroller.PNG)
-)
 
 *Description: Diagram showing the states and transitions of the FSM used for wall-following.*
 
@@ -79,57 +64,65 @@ In our project, RANSAC is used to enhance the wall-following behavior. The integ
 
 ![Wall Following](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/HighLabelWallFollow1.PNG)
 
-*Description: Illustration of the robot following the wall, with lidar sensor readings and wall detection.*
+*Description: Illustration of the robot following the wall, with LiDAR sensor readings and wall detection.*
 
 ### RANSAC Wall Detection
 
 ![RANSAC Wall Detection](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/HighLabelWallFollow.PNG)
 
-*Description: Visualization of RANSAC applied to lidar data for improved wall detection.*
+*Description: Visualization of RANSAC applied to LiDAR data for improved wall detection.*
 
 
 ## Video Demonstrations
 
-1. [HighLabelControlWithRansac](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/VIdeo/HighLabelControlWithRansac-2024-07-24_01.08.16.mp4)
-2. [HighLabelllControlWithRansac](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/VIdeo/HighLabelllControlWithRansac-2024-07-24_01.16.07.mp4)
+### HighLabelControlWithRansac
 
-# Project Overview
+[![HighLabelControlWithRansac](https://img.youtube.com/vi/VIDEO_ID_HERE/0.jpg)](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/VIdeo/HighLabelControlWithRansac-2024-07-24_01.08.16.mp4)
+
+*Description: Demonstration of the high-level control system with RANSAC.*
+
+### HighLabelllControlWithRansac
+
+[![HighLabelllControlWithRansac](https://img.youtube.com/vi/VIDEO_ID_HERE/0.jpg)](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/VIdeo/HighLabelllControlWithRansac-2024-07-24_01.16.07.mp4)
+
+*Description: Additional demonstration of the control system in action.*
 
 ## Key Features
 
-- Wall detection using RANSAC algorithm
-- State machine-based control for wall following
-- Real-time visualization of laser data and fitted lines
-- ROS2 integration for robot control and sensor data processing
+- **Wall Detection:** Utilizes RANSAC for accurate wall detection.
+- **State Machine Control:** Manages wall-following behavior with a Finite State Machine.
+- **Real-Time Visualization:** Provides real-time plots of laser data and fitted lines.
+- **ROS2 Integration:** Seamlessly integrates with ROS2 for robot control and sensor data processing.
 
 ## Installation
 
 ### Prerequisites
 
-- Ubuntu 20.04 or later (22.04 recommended)
-- ROS2 Humble or later
-- Python 3.8 or later
-- Unity (for simulation, if applicable)
+- **Operating System:** Ubuntu 20.04 or later (22.04 recommended)
+- **ROS2:** Humble or later
+- **Python:** 3.8 or later
+- **Unity (Optional):** For simulation, if applicable
 
 ### ROS2 Installation
 
-1. Follow the official ROS2 installation guide: [ROS2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
-2. Make sure to install the desktop version for full functionality
+1. Follow the [official ROS2 installation guide](https://docs.ros.org/en/humble/Installation.html).
+2. Install the desktop version for full functionality.
 
 ### Unity Installation
 
-> Note: This step is only necessary if you plan to use simulation.
+*Note: Unity is only necessary for simulation.*
 
-1. Download and install Unity Hub from: [Unity Download Page](https://unity.com/download)
-2. Install the appropriate Unity version (2021.3 LTS recommended)
-3. Follow the Unity-ROS2 integration guide: [ROS-TCP-Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector)
+1. Download and install Unity Hub from the [Unity Download Page](https://unity.com/download).
+2. Install Unity version 2021.3 LTS (recommended).
+3. Follow the [Unity-ROS2 integration guide](https://github.com/Unity-Technologies/ROS-TCP-Connector).
 
 ### Project Setup
 
-1. Create a ROS2 workspace:
+1. **Create a ROS2 workspace:**
    ```sh
    mkdir -p ~/colcon_ws/src
    cd ~/colcon_ws/src
+
    ```
 
 2. Clone the project repository:
@@ -167,6 +160,22 @@ In our project, RANSAC is used to enhance the wall-following behavior. The integ
    ~/. install/setup.bash
    ros2 run turtlebot3_HighLevelControl turtlebot3_HighLevelControl 
    ```
+
+## Code Structure
+
+The codebase is organized into the following main components:
+
+1. **`Turtlebot3HighLevelControl` Class:**
+   - **Initializes ROS 2 Publishers, Subscribers, and Timers:** Sets up communication with ROS 2 topics and services, and manages timing for periodic tasks.
+   - **Processes Laser Data and Applies RANSAC:** Handles incoming laser data, applies the RANSAC algorithm for line fitting, and extracts relevant information.
+   - **Implements Control Logic Based on FSM States:** Executes the control logic according to the current state of the Finite State Machine (FSM).
+   - **Handles Real-Time Plotting:** Provides real-time visualization of data and system states.
+
+2. **Main Function:**
+   - **Initializes the ROS 2 Node:** Sets up the main ROS 2 node for the application.
+   - **Runs the Control Loop:** Executes the main loop that drives the control logic and state updates.
+   - **Handles Graceful Shutdown:** Ensures proper shutdown procedures are followed to clean up resources and terminate processes cleanly.
+
 
 ## Customization and Improvement
 
