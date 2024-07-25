@@ -199,4 +199,7 @@ Future students can improve this project by:
 - [Turtlebot3 Manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
 - [RANSAC Algorithm](https://en.wikipedia.org/wiki/Random_sample_consensus)
 
-For any questions or issues, please contact the authors or open an issue in the project repository.
+
+For any questions or issues, don't hesitate to get in touch with the authors or open an issue in the project repository.
+- hailemicaellulseged.yimer@studenti.univr.it
+- fitsumsereke.tedla@studenti.univr.it
