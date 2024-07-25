@@ -88,6 +88,13 @@ In our project, RANSAC is used to enhance the wall-following behavior. The integ
 *Description: Visualization of RANSAC applied to lidar data for improved wall detection.*
 
 
+## Video Demonstrations
+
+1. [HighLabelControlWithRansac](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/raw/main/Video/HighLabelControlWithRansac-2024-07-24_01.08.16.mp4)
+2. [HighLabelllControlWithRansac](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/raw/main/Video/HighLabelllControlWithRansac-2024-07-24_01.16.07.mp4)
+
+# Project Overview
+
 ## Key Features
 
 - Wall detection using RANSAC algorithm
