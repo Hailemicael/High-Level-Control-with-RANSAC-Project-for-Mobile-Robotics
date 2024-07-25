@@ -70,19 +70,20 @@ In our project, RANSAC is used to enhance the wall-following behavior. The integ
 
 ### FSM Diagram
 
-![FSM Diagram](path/to/fsm-diagram.png)
+![FSM Diagram](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/HighLabelCOntroller.PNG)
+)
 
 *Description: Diagram showing the states and transitions of the FSM used for wall-following.*
 
 ### Wall Following Scenario
 
-![Wall Following](path/to/wall-following-scenario.png)
+![Wall Following](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/HighLabelWallFollow1.PNG)
 
 *Description: Illustration of the robot following the wall, with lidar sensor readings and wall detection.*
 
 ### RANSAC Wall Detection
 
-![RANSAC Wall Detection](path/to/ransac-wall-detection.png)
+![RANSAC Wall Detection](https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics/blob/main/Image/HighLabelWallFollow.PNG)
 
 *Description: Visualization of RANSAC applied to lidar data for improved wall detection.*
 
