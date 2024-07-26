@@ -219,68 +219,68 @@ class Turtlebot3HighLevelControl(Node):
         # Log the current state and distances to the front, left, and right.
         self.get_logger().info(f"State: {self.state_} | Front: {self.regions['front']:.3f} | Left: {self.regions['left']:.3f} | Right: {self.regions['right']:.3f}")
 
-def change_state(self, state):
-    """
-    Changes the state of the robot and logs the transition.
-    """
-    if state != self.state_:
-        # Log the transition to the new state.
-        self.get_logger().info(f'Wall follower - [{state}] - {self.state_dict_[state]}')
-        self.state_ = state  # Update the state.
+    def change_state(self, state):
+        """
+        Changes the state of the robot and logs the transition.
+        """
+        if state != self.state_:
+            # Log the transition to the new state.
+            self.get_logger().info(f'Wall follower - [{state}] - {self.state_dict_[state]}')
+            self.state_ = state  # Update the state.
 
-def find_wall(self):
-    """
-    Set the robot to move forward to find the wall.
-    """
-    self.msg.linear.x = 0.021  # Move forward with a small speed.
-    self.msg.angular.z = 0.0  # No turning, just move straight.
+    def find_wall(self):
+        """
+        Set the robot to move forward to find the wall.
+        """
+        self.msg.linear.x = 0.021  # Move forward with a small speed.
+        self.msg.angular.z = 0.0  # No turning, just move straight.
 
-def align_left(self):
-    """
-    Set the robot to stop moving forward and turn left to align with the wall.
-    """
-    self.msg.linear.x = 0.0  # Stop moving forward.
-    self.msg.angular.z = 0.21  # Turn left to align with the wall.
+    def align_left(self):
+        """
+        Set the robot to stop moving forward and turn left to align with the wall.
+        """
+        self.msg.linear.x = 0.0  # Stop moving forward.
+        self.msg.angular.z = 0.21  # Turn left to align with the wall.
 
-def follow_the_wall(self):
-    """
-    Set the robot to move forward while following the wall.
-    """
-    self.msg.linear.x = 0.021  # Move forward with a small speed.
-    self.msg.angular.z = 0.0  # Move straight, no turning.
+    def follow_the_wall(self):
+        """
+        Set the robot to move forward while following the wall.
+        """
+        self.msg.linear.x = 0.021  # Move forward with a small speed.
+        self.msg.angular.z = 0.0  # Move straight, no turning.
 
-def stop_robot(self):
-    """
-    Stop the robot's movement by setting linear and angular velocities to zero.
-    """
-    self.msg.linear.x = 0.0  # Stop moving forward by setting the linear velocity to 0.
-    self.msg.angular.z = 0.0  # Stop turning by setting the angular velocity to 0.
-    self.publisher_.publish(self.msg)  # Publish the stop command to the '/cmd_vel' topic to execute the stop.
+    def stop_robot(self):
+        """
+        Stop the robot's movement by setting linear and angular velocities to zero.
+        """
+        self.msg.linear.x = 0.0  # Stop moving forward by setting the linear velocity to 0.
+        self.msg.angular.z = 0.0  # Stop turning by setting the angular velocity to 0.
+        self.publisher_.publish(self.msg)  # Publish the stop command to the '/cmd_vel' topic to execute the stop.
 
-def display_terminal_output(self):
-    """
-    Display diagnostic information about the robot's laser scan data and RANSAC line fitting.
-    """
-    # Log the first 10 laser points to the terminal.
-    self.get_logger().info("All Laser Points:")
-    for i, point in enumerate(self.all_laser_points[:10]):  # Display first 10 points from the laser scan data.
-        self.get_logger().info(f"Point {i}: ({point[0]:.3f}, {point[1]:.3f})")
-    
-    # If there are more than 10 points, log how many more points there are beyond the first 10.
-    if len(self.all_laser_points) > 10:
-        self.get_logger().info(f"... and {len(self.all_laser_points) - 10} more points")
+    def display_terminal_output(self):
+        """
+        Display diagnostic information about the robot's laser scan data and RANSAC line fitting.
+        """
+        # Log the first 10 laser points to the terminal.
+        self.get_logger().info("All Laser Points:")
+        for i, point in enumerate(self.all_laser_points[:10]):  # Display first 10 points from the laser scan data.
+            self.get_logger().info(f"Point {i}: ({point[0]:.3f}, {point[1]:.3f})")
+        
+        # If there are more than 10 points, log how many more points there are beyond the first 10.
+        if len(self.all_laser_points) > 10:
+            self.get_logger().info(f"... and {len(self.all_laser_points) - 10} more points")
 
-    # Log RANSAC line fitting results for each region (front, left, right).
-    for region in ['front', 'left', 'right']:
-        if len(self.plot_data[f'{region}_fit_x']) > 0:  # Check if there is RANSAC line data for the region.
-            # Log the equation of the RANSAC line fitted to the data for the region.
-            self.get_logger().info(f"{region.capitalize()} RANSAC Line: y = {self.plot_data[f'{region}_fit_y'][0]:.3f}x + {self.plot_data[f'{region}_fit_y'][0]:.3f}")
-        else:
-            # Log a message if no RANSAC line was fitted for the region.
-            self.get_logger().info(f"No RANSAC line for {region}")
+        # Log RANSAC line fitting results for each region (front, left, right).
+        for region in ['front', 'left', 'right']:
+            if len(self.plot_data[f'{region}_fit_x']) > 0:  # Check if there is RANSAC line data for the region.
+                # Log the equation of the RANSAC line fitted to the data for the region.
+                self.get_logger().info(f"{region.capitalize()} RANSAC Line: y = {self.plot_data[f'{region}_fit_y'][0]:.3f}x + {self.plot_data[f'{region}_fit_y'][0]:.3f}")
+            else:
+                # Log a message if no RANSAC line was fitted for the region.
+                self.get_logger().info(f"No RANSAC line for {region}")
 
-    # Log a separator line for clarity.
-    self.get_logger().info("-------------------")
+        # Log a separator line for clarity.
+        self.get_logger().info("-------------------")
 
 def main(args=None):
     """
@@ -342,89 +342,4 @@ if __name__ == '__main__':
 
 # 4. **Script Execution:**
 #    - The `if __name__ == '__main__':` block ensures the `main` function is executed if the script is run directly.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
