@@ -129,7 +129,7 @@ You can also view the video directly on [Vimeo](https://vimeo.com//990198008).
 
 2. Clone the project repository:
    ```sh
-   git clone https://Hailemicael/Turtlebot3-High-Level-Control-System-with-Ransac.git]
+   git clone https://github.com/Hailemicael/High-Level-Control-with-RANSAC-Project-for-Mobile-Robotics.git
    ```
 
 3. Install dependencies:
